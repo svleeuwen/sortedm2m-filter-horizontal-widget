@@ -1,0 +1,93 @@
+.sortedm2m-container {
+    margin-right: 10px;
+    width: 570px;
+}
+
+.sortedm2m-container p.selector-filter {
+    width: 570px;
+    padding: 0;
+    margin: 0;
+}
+
+.sortedm2m-container p.selector-filter input {
+    width: 532px;
+    margin: 5px 4px;
+}
+
+ul.sortedm2m {
+    display: block;
+    width: 554px;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 6px 8px;
+    list-style-type: none;
+    text-align: left;
+}
+
+ul.sortedm2m li {
+    list-style-type: none;
+    text-align: left;
+    width: 550px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+ul.sortedm2m li, ul.sortedm2m label {
+    cursor: move;
+}
+
+/* required to work properly in django admin */
+body.change-form .sortedm2m-container {
+    float: left;
+}
+.module ul.sortedm2m {
+    margin: 0;
+    padding: 6px 8px;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* BEGIN CUSTOMIZATION */
+
+/* Make the whole widget wider, to fit the extra buttons: */
+.selector {
+  width: 865px;
+}
+
+.selector ul.selector-orderer {
+  float: left;
+  width: 22px;
+  height: 50px;
+  margin: 10em 3px 0 3px;
+  padding: 0;
+  background: url('../../static/admin/img/chooser-bg.gif') top center no-repeat;
+}
+
+.selector-orderer li {
+  list-style-type: none;
+  margin: 0;
+  padding: 3px;
+}
+
+.selector-up,
+.selector-down {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-indent: -3000px;
+}
+.selector-up {
+  background: url('selector-up.gif') top center no-repeat;
+}
+.selector-down {
+  background: url('selector-down.gif') top center no-repeat;
+}
