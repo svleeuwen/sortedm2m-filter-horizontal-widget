@@ -75,7 +75,7 @@ setup(
     include_package_data = True,
     zip_safe = False,
     classifiers = [
-        'Development Status :: 1 - Beta',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',

@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-import django
 import sys
 from itertools import chain
 from django import forms
 from django.conf import settings
 from django.db.models.query import QuerySet
-from django.template.loader import render_to_string
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape, escape
 from django.utils.safestring import mark_safe
@@ -139,7 +137,6 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
         name.split('-')[-1], prefix_name))
 
         return mark_safe(u'\n'.join(output))
-
 
     def render_option(self, selected_choices, option_value, option_label):
         option_value = force_text(option_value)
