@@ -2,7 +2,7 @@
 django-sortedm2m-filter-horizontal-widget
 =========================================
 
-``sortedm2m-filter-horizontal-widget`` is widget for Gregor Mülleggers excellent django-sortedm2m_ library.
+``sortedm2m-filter-horizontal-widget`` is an admin widget for Gregor Mülleggers excellent django-sortedm2m_ library.
 
 .. _django-sortedm2m: http://github.com/gregmuellegger/django-sortedm2m
 

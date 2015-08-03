@@ -63,7 +63,7 @@ long_description = UltraMagicString('\n\n'.join((
 
 setup(
     name = 'django-sortedm2m-filter-horizontal-widget',
-    version = find_version('sortedm2m_horizontal_filter_widget', '__init__.py'),
+    version = find_version('sortedm2m_filter_horizontal_widget', '__init__.py'),
     url = 'http://github.com/svleeuwen/django-sortedm2m-filter-horizontal-widget',
     license = 'BSD',
     description =
@@ -71,7 +71,7 @@ setup(
     long_description = long_description,
     author = UltraMagicString('Sander van Leeuwen'),
     author_email = 'replytosander@gmail.com',
-    packages = ['sortedm2m_horizontal_filter_widget'],
+    packages = ['sortedm2m_filter_horizontal_widget'],
     include_package_data = True,
     zip_safe = False,
     classifiers = [

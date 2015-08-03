@@ -71,11 +71,11 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
 
     class Media:
         css = {
-            'screen': (STATIC_URL + 'sortedm2m_horizontal_filter_widget/widget.css',)
+            'screen': (STATIC_URL + 'sortedm2m_filter_horizontal_widget/widget.css',)
         }
 
-        js = (STATIC_URL + 'sortedm2m_horizontal_filter_widget/OrderedSelectBox.js',
-              STATIC_URL + 'sortedm2m_horizontal_filter_widget/OrderedSelectFilter.js',
+        js = (STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectBox.js',
+              STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectFilter.js',
               STATIC_URL + 'admin/js/inlines.js')
 
     def build_attrs(self, attrs=None, **kwargs):
