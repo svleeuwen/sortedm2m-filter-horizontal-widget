@@ -3,6 +3,4 @@ include LICENSE.txt
 include MANIFEST.in
 include README.rst
 include AUTHORS.rst
-recursive-include sortedm2m/static *
-recursive-include sortedm2m/templates *
-recursive-include sortedm2m/locale *
+recursive-include sortedm2m_filter_horizontal_widget/static *
