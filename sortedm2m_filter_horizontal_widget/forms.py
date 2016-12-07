@@ -7,7 +7,12 @@ from django.db.models.query import QuerySet
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape, escape
 from django.utils.safestring import mark_safe
-from django.forms.util import flatatt
+
+try:
+    from django.forms.utils import flatatt
+except ImportError:
+    from django.forms.util import flatatt
+
 from django.utils.translation import ugettext_lazy as _
 
 
