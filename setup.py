@@ -28,10 +28,10 @@ except NameError:
 
 
 class UltraMagicString(object):
-    '''
+    """
     Taken from
     http://stackoverflow.com/questions/1162338/whats-the-right-way-to-use-unicode-metadata-in-setup-py
-    '''
+    """
     def __init__(self, value):
         if not isinstance(value, bytes):
             value = value.encode('utf8')
