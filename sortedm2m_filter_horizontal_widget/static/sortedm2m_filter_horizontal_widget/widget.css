@@ -64,10 +64,10 @@ body.change-form .sortedm2m-container {
 .selector ul.selector-orderer {
   float: left;
   width: 22px;
-  height: 50px;
-  margin: 10em 3px 0 3px;
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 10em 5px 0 5px;
   padding: 0;
-  background: url('chooser-bg.gif') top center no-repeat;
 }
 
 .selector-orderer li {
@@ -86,8 +86,8 @@ body.change-form .sortedm2m-container {
   text-indent: -3000px;
 }
 .selector-up {
-  background: url('selector-up.gif') top center no-repeat;
+  background: url(../admin/img/selector-icons.svg) 0 -15px no-repeat;
 }
 .selector-down {
-  background: url('selector-down.gif') top center no-repeat;
+  background: url(../admin/img/selector-icons.svg) 0 -47px no-repeat;
 }
