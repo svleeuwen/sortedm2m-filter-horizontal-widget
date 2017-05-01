@@ -16,7 +16,7 @@ Installation
 Usage
 =====
 
-Add ``sortedm2m-filter-horizontal-widget`` to your ``INSTALLED_APPS``. (needed for static files)
+Add ``sortedm2m_filter_horizontal_widget`` to your ``INSTALLED_APPS``. (needed for static files)
 
 In your ``ModelAdmin`` add the following function to override the default widget. ::
 
