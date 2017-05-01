@@ -26,7 +26,7 @@ var OrderedSelectFilter = {
 
         if(!from_box) {
           return;
-        };
+        }
 
         from_box.id += '_from'; // change its ID
         from_box.className = 'filtered';
@@ -52,14 +52,14 @@ var OrderedSelectFilter = {
         var selector_available = quickElement('div', selector_div, '');
         selector_available.className = 'selector-available';
         var title_available = quickElement('h2', selector_available, interpolate(gettext('Available %s') + ' ', [field_name]));
-        quickElement('img', title_available, '', 'src', admin_media_prefix + 'img/icon-unknown.gif', 'width', '10', 'height', '10', 'class', 'help help-tooltip', 'title', interpolate(gettext('This is the list of available %s. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'), [field_name]));
+        quickElement('img', title_available, '', 'src', '/static/sortedm2m_filter_horizontal_widget/' + 'icon-unknown.svg', 'width', '10', 'height', '10', 'class', 'help help-tooltip', 'title', interpolate(gettext('This is the list of available %s. You may choose some by selecting them in the box below and then clicking the "Choose" arrow between the two boxes.'), [field_name]));
 
         var filter_p = quickElement('p', selector_available, '');
         filter_p.className = 'selector-filter';
 
         var search_filter_label = quickElement('label', filter_p, '', 'for', field_id + "_input", 'style', 'width:16px;padding:2px');
 
-        var search_selector_img = quickElement('img', search_filter_label, '', 'src', admin_media_prefix + 'img/selector-search.gif');
+        var search_selector_img = quickElement('img', search_filter_label, '', 'src', '/static/sortedm2m_filter_horizontal_widget/' + 'search.svg');
         search_selector_img.alt = gettext("Filter");
 
         filter_p.appendChild(document.createTextNode(' '));
@@ -82,7 +82,7 @@ var OrderedSelectFilter = {
         var selector_chosen = quickElement('div', selector_div, '');
         selector_chosen.className = 'selector-chosen';
         var title_chosen = quickElement('h2', selector_chosen, interpolate(gettext('Chosen %s') + ' ', [field_name]));
-        quickElement('img', title_chosen, '', 'src', admin_media_prefix + 'img/icon-unknown.gif', 'width', '10', 'height', '10', 'class', 'help help-tooltip', 'title', interpolate(gettext('This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'), [field_name]));
+        quickElement('img', title_chosen, '', 'src', '/static/sortedm2m_filter_horizontal_widget/' + 'icon-unknown.svg', 'width', '10', 'height', '10', 'class', 'help help-tooltip', 'title', interpolate(gettext('This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the "Remove" arrow between the two boxes.'), [field_name]));
 
         var to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', 'multiple', 'size', from_box.size, 'name', from_box.getAttribute('name'));
         to_box.className = 'filtered';
@@ -171,4 +171,4 @@ var OrderedSelectFilter = {
         }
         return true;
     }
-}
+};

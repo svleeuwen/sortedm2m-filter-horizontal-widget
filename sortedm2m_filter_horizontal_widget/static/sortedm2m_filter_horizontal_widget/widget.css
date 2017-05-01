@@ -67,7 +67,7 @@ body.change-form .sortedm2m-container {
   height: 50px;
   margin: 10em 3px 0 3px;
   padding: 0;
-  background: url('../../static/admin/img/chooser-bg.gif') top center no-repeat;
+  background: url('chooser-bg.gif') top center no-repeat;
 }
 
 .selector-orderer li {

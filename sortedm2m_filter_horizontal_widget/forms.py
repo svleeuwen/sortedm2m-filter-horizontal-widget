@@ -79,11 +79,13 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
 
         js = (STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectBox.js',
               STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectFilter.js',
+              STATIC_URL + 'sortedm2m_filter_horizontal_widget/jquery.min.js',
               STATIC_URL + 'admin/js/inlines.js')
 
-    def build_attrs(self, attrs=None, **kwargs):
-        attrs = super(SortedFilteredSelectMultiple, self).\
-        build_attrs(attrs, **kwargs)
+    def build_attrs(self, attrs=None, extra_attrs=None, **kwargs):
+        attrs = dict(attrs, **kwargs)
+        if extra_attrs:
+            attrs.update(extra_attrs)
         classes = attrs.setdefault('class', '').split()
         classes.append('sortedm2m')
         if self.is_stacked: classes.append('stacked')
@@ -94,7 +96,7 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
         if attrs is None: attrs = {}
         if value is None: value = []
         admin_media_prefix = getattr(settings, 'ADMIN_MEDIA_PREFIX', STATIC_URL + 'admin/')
-        final_attrs = self.build_attrs(attrs, name=name)
+        final_attrs = self.build_attrs(self.attrs, attrs, name=name)
         output = [u'<select multiple="multiple"%s>' % flatatt(final_attrs)]
         options = self.render_options(choices, value)
         if options:
