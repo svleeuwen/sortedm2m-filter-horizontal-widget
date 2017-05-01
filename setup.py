@@ -60,11 +60,13 @@ long_description = UltraMagicString('\n\n'.join((
     read('CHANGES.rst'),
 )))
 
+version = find_version('sortedm2m_filter_horizontal_widget', '__init__.py')
 
 setup(
     name = 'django-sortedm2m-filter-horizontal-widget',
-    version = find_version('sortedm2m_filter_horizontal_widget', '__init__.py'),
+    version = version,
     url = 'https://github.com/svleeuwen/sortedm2m-filter-horizontal-widget',
+    download_url = 'https://github.com/svleeuwen/sortedm2m-filter-horizontal-widget/archive/{}.tar.gz'.format(version),
     license = 'BSD',
     description =
         'Horizontal filter widget for django-sortedm2m',
