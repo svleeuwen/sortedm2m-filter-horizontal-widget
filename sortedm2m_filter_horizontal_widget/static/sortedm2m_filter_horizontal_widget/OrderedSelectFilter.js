@@ -84,11 +84,11 @@ var OrderedSelectFilter = {
         choose_all.className = 'selector-chooseall';
 
         // <ul class="selector-chooser">
-        var selector_chooser = quickElement('ul', selector_div, '');
+        var selector_chooser = quickElement('ul', selector_div);
         selector_chooser.className = 'selector-chooser';
-        var add_link = quickElement('a', quickElement('li', selector_chooser, ''), gettext('Add'), 'href', 'javascript: (function(){ OrderedSelectBox.move("' + field_id + '_from","' + field_id + '_to");})()');
+        var add_link = quickElement('a', quickElement('li', selector_chooser), gettext('Choose'), 'title', gettext('Choose'), 'href', '#', 'id', field_id + '_add_link');
         add_link.className = 'selector-add';
-        var remove_link = quickElement('a', quickElement('li', selector_chooser, ''), gettext('Remove'), 'href', 'javascript: (function(){ OrderedSelectBox.move("' + field_id + '_to","' + field_id + '_from");})()');
+        var remove_link = quickElement('a', quickElement('li', selector_chooser), gettext('Remove'), 'title', gettext('Remove'), 'href', '#', 'id', field_id + '_remove_link');
         remove_link.className = 'selector-remove';
 
         // <div class="selector-chosen">
@@ -125,10 +125,26 @@ var OrderedSelectFilter = {
         from_box.setAttribute('name', from_box.getAttribute('name') + '_old');
 
         // Set up the JavaScript event handlers for the select box filter interface
+        var move_selection = function(e, elem, move_func, from, to) {
+            if (elem.className.indexOf('active') !== -1) {
+                move_func(from, to);
+                OrderedSelectFilter.refresh_icons(field_id);
+            }
+            e.preventDefault();
+        };
+        addEvent(choose_all, 'click', function(e) { move_selection(e, this, OrderedSelectBox.move_all, field_id + '_from', field_id + '_to'); });
+        addEvent(add_link, 'click', function(e) { move_selection(e, this, OrderedSelectBox.move, field_id + '_from', field_id + '_to'); });
+        addEvent(remove_link, 'click', function(e) { move_selection(e, this, OrderedSelectBox.move, field_id + '_to', field_id + '_from'); });
+        addEvent(clear_all, 'click', function(e) { move_selection(e, this, OrderedSelectBox.move_all, field_id + '_to', field_id + '_from'); });
         addEvent(filter_input, 'keyup', function(e) { OrderedSelectFilter.filter_key_up(e, field_id); });
         addEvent(filter_input, 'keydown', function(e) { OrderedSelectFilter.filter_key_down(e, field_id); });
         addEvent(from_box, 'dblclick', function() { OrderedSelectBox.move(field_id + '_from', field_id + '_to'); });
         addEvent(to_box, 'dblclick', function() { OrderedSelectBox.move(field_id + '_to', field_id + '_from'); });
+        addEvent(selector_div, 'change', function(e) {
+            if (e.target.tagName === 'SELECT') {
+                OrderedSelectFilter.refresh_icons(field_id);
+            }
+        });
         addEvent(findForm(from_box), 'submit', function() { OrderedSelectBox.select_all(field_id + '_to'); });
         OrderedSelectBox.init(field_id + '_from');
         OrderedSelectBox.init(field_id + '_to');
@@ -139,7 +155,7 @@ var OrderedSelectFilter = {
             // In horizontal mode, give the same height to the two boxes.
             var j_from_box = $(from_box);
             var j_to_box = $(to_box);
-            var resize_filters = function() { j_to_box.height($(filter_p).outerHeight() + j_from_box.outerHeight()); }
+            var resize_filters = function() { j_to_box.height($(filter_p).outerHeight() + j_from_box.outerHeight()); };
             if (j_from_box.outerHeight() > 0) {
                 resize_filters(); // This fieldset is already open. Resize now.
             } else {

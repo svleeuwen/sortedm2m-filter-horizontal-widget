@@ -58,7 +58,7 @@ body.change-form .sortedm2m-container {
 
 /* Make the whole widget wider, to fit the extra buttons: */
 .selector {
-  width: 865px;
+  width: 827px;
 }
 
 .selector ul.selector-orderer {
@@ -86,8 +86,14 @@ body.change-form .sortedm2m-container {
   text-indent: -3000px;
 }
 .selector-up {
-  background: url(../admin/img/selector-icons.svg) 0 -15px no-repeat;
+  background: url(../admin/img/selector-icons.svg) 0 1px no-repeat;
 }
 .selector-down {
+  background: url(../admin/img/selector-icons.svg) 0 -31px no-repeat;
+}
+.selector-up:hover {
+  background: url(../admin/img/selector-icons.svg) 0 -15px no-repeat;
+}
+.selector-down:hover {
   background: url(../admin/img/selector-icons.svg) 0 -47px no-repeat;
 }
