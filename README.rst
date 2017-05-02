@@ -13,7 +13,6 @@ Installation
 
 ``pip install django-sortedm2m-filter-horizontal-widget``
 
-
 What version do I need?
 =======================
 
@@ -24,7 +23,7 @@ What version do I need?
 +------------+------------+
 | 1.8        | 1.1        |
 +------------+------------+
-| > 1.8      | dev        |
+| >= 1.9     | latest     |
 +------------+------------+
 
 Usage
