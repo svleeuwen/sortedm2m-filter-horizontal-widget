@@ -8,6 +8,8 @@ django-sortedm2m-filter-horizontal-widget
 
 This allows for a familiar filter horizontal widget.
 
+.. figure:: https://d1ro8r1rbfn3jf.cloudfront.net/ms_144103/11clLqJhyNUbvQj29D1oJ5gnhbqmct/screencast%2B2017-05-02%2B10-11-01.gif?Expires=1493799115&Signature=P00zKop9k0s7sljA1NH8ckcbM62wXJyWLm8~nsN3GL92N6yXBkaW7AtyPeMgOH~8uDrTjzNOn-xP99REq1C2FWiFHXg-PC91U9hPw1LsIFEREqelyWuqBw4uCa2ACRgdFpeWi8XoRYRvOgEG98grwecQlxS4spX-KjNi7myeL95RxchdSvvV02~dd6pIQdPC0IqJNpECLK1o3e5XNfpMP71uCOQQn7KYIg0OM4bTHwDyQVE9-7HW6jvQJJ5NXrJXrJIrtyNOO5CV~UhgFEyyNn8-2vFNB5Q-IUkU9EstpgUpNehuJS0ygaDLFXE9zjQOCLiJb~gecASIboe5YZ0etQ__&Key-Pair-Id=APKAJHEJJBIZWFB73RSA
+
 Installation
 ============
 
