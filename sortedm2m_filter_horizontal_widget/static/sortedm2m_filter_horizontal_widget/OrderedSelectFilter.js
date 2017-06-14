@@ -110,7 +110,7 @@ var OrderedSelectFilter = {
 
         var to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', 'multiple', 'size', from_box.size, 'name', from_box.getAttribute('name'));
         to_box.className = 'filtered';
-        var clear_all = quickElement('a', selector_chosen, gettext('Clear all'), 'title', gettext('Clear all'), 'href', '#', 'id', field_id + '_remove_all_link');
+        var clear_all = quickElement('a', selector_chosen, gettext('Choose all'), 'title', gettext('Clear all'), 'href', '#', 'id', field_id + '_remove_all_link');
         clear_all.className = 'selector-clearall';
 
         // <ul class="selector-orderer">
