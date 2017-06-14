@@ -101,10 +101,14 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
         options = self.render_options(choices, value)
         if options:
             output.append(options)
+        if 'verbose_name' in final_attrs.keys():
+            verbose_name = final_attrs['verbose_name']
+        else:
+            verbose_name = name.split('-')[-1]
         output.append(u'</select>')
         output.append(u'<script>addEvent(window, "load", function(e) {')
         output.append(u'OrderedSelectFilter.init("id_%s", "%s", %s, "%s") });</script>\n' %\
-                      (name, name.split('-')[-1], int(self.is_stacked), admin_media_prefix))
+                      (name, verbose_name, int(self.is_stacked), admin_media_prefix))
 
         prefix_name = name.split('-')[0]
         output.append(u"""
