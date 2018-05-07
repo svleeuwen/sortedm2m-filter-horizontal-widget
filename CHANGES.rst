@@ -1,5 +1,9 @@
 Changelog
 =========
+1.3:
+ Handle responsive css introduced in django 2.0
+ Handle removal of old JS cross-browser utilities introduced in django 2.0
+
 1.2.1:
  Add workaround to have verbose_name reference (#1)
  Fix Select and Clear All button (#2)
