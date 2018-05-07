@@ -114,11 +114,11 @@ var OrderedSelectFilter = {
         clear_all.className = 'selector-clearall';
 
         // <ul class="selector-chooser">
-        var selector_orderer = quickElement('ul', selector_div, '');
-        selector_orderer.className = 'selector-chooser';
-        var up_link = quickElement('a', quickElement('li', selector_orderer, ''), gettext('Up'), 'href', 'javascript: (function(){ OrderedSelectBox.orderUp("' + field_id + '_to");})()');
+        var selector_chooser = quickElement('ul', selector_div);
+        selector_chooser.className = 'selector-chooser';
+        var up_link = quickElement('a', quickElement('li', selector_chooser, ''), gettext('Up'), 'href', 'javascript: (function(){ OrderedSelectBox.orderUp("' + field_id + '_to");})()');
         up_link.className = 'selector-up';
-        var down_link = quickElement('a', quickElement('li', selector_orderer, ''), gettext('Down'), 'href', 'javascript: (function(){ OrderedSelectBox.orderDown("' + field_id + '_to");})()');
+        var down_link = quickElement('a', quickElement('li', selector_chooser, ''), gettext('Down'), 'href', 'javascript: (function(){ OrderedSelectBox.orderDown("' + field_id + '_to");})()');
         down_link.className = 'selector-down';
 
 
