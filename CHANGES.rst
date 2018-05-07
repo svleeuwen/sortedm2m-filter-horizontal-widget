@@ -1,5 +1,8 @@
 Changelog
 =========
+1.3.2:
+ Fix incorrect class name
+
 1.3.1:
  Fix duplicate "Add another" button in stacked inline (#12)
 
