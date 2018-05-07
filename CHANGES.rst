@@ -1,5 +1,8 @@
 Changelog
 =========
+1.3.1:
+ Fix duplicate "Add another" button in stacked inline (#12)
+
 1.3:
  Handle responsive css introduced in django 2.0
  Handle removal of old JS cross-browser utilities introduced in django 2.0
