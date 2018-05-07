@@ -80,7 +80,7 @@ var OrderedSelectFilter = {
         var filter_input = quickElement('input', filter_p, '', 'type', 'text');
         filter_input.id = field_id + '_input';
         selector_available.appendChild(from_box);
-        var choose_all = quickElement('a', selector_available, gettext('Choose all'), 'href', 'javascript: (function(){ OrderedSelectBox.move_all("' + field_id + '_from", "' + field_id + '_to"); })()');
+        var choose_all = quickElement('a', selector_available, gettext('Choose all'), 'title', gettext('Choose all'), 'href', '#', 'id', field_id + '_add_all_link');
         choose_all.className = 'selector-chooseall';
 
         // <ul class="selector-chooser">
@@ -110,7 +110,7 @@ var OrderedSelectFilter = {
 
         var to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', 'multiple', 'size', from_box.size, 'name', from_box.getAttribute('name'));
         to_box.className = 'filtered';
-        var clear_all = quickElement('a', selector_chosen, gettext('Clear all'), 'href', 'javascript: (function() { OrderedSelectBox.move_all("' + field_id + '_to", "' + field_id + '_from");})()');
+        var clear_all = quickElement('a', selector_chosen, gettext('Remove all'), 'title', gettext('Clear all'), 'href', '#', 'id', field_id + '_remove_all_link');
         clear_all.className = 'selector-clearall';
 
         // <ul class="selector-orderer">
@@ -169,14 +169,16 @@ var OrderedSelectFilter = {
     refresh_icons: function(field_id) {
         var from = $('#' + field_id + '_from');
         var to = $('#' + field_id + '_to');
-        var is_from_selected = from.find('option:selected').length > 0;
-        var is_to_selected = to.find('option:selected').length > 0;
+        var is_from_selected  = from.find('option:selected').length > 0;
+        var is_to_selected    =   to.find('option:selected').length > 0;
+        var is_from_non_empty = from.find('option').length > 0;
+        var is_to_non_empty   =   to.find('option').length > 0;
         // Active if at least one item is selected
         $('#' + field_id + '_add_link').toggleClass('active', is_from_selected);
         $('#' + field_id + '_remove_link').toggleClass('active', is_to_selected);
         // Active if the corresponding box isn't empty
-        $('#' + field_id + '_add_all_link').toggleClass('active', from.find('option').length > 0);
-        $('#' + field_id + '_remove_all_link').toggleClass('active', to.find('option').length > 0);
+        $('#' + field_id + '_add_all_link').toggleClass('active', is_from_non_empty);
+        $('#' + field_id + '_remove_all_link').toggleClass('active', is_to_non_empty);
     },
     filter_key_up: function(event, field_id) {
         from = document.getElementById(field_id + '_from');
