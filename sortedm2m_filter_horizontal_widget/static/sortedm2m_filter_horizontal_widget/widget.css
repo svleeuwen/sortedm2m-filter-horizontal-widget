@@ -61,7 +61,7 @@ body.change-form .sortedm2m-container {
   width: 827px;
 }
 
-.selector ul.selector-orderer {
+.selector ul.selector-chooser {
   float: left;
   width: 22px;
   background-color: #eee;
@@ -70,7 +70,7 @@ body.change-form .sortedm2m-container {
   padding: 0;
 }
 
-.selector-orderer li {
+.selector-chooser li {
   list-style-type: none;
   margin: 0;
   padding: 3px;
@@ -92,8 +92,41 @@ body.change-form .sortedm2m-container {
   background: url(../admin/img/selector-icons.svg) 0 -31px no-repeat;
 }
 .selector-up:hover {
-  background: url(../admin/img/selector-icons.svg) 0 -15px no-repeat;
+  background-position: 0 -15px;
 }
 .selector-down:hover {
-  background: url(../admin/img/selector-icons.svg) 0 -47px no-repeat;
+  background-position: 0 -47px;
+}
+
+/* Pull add-related button to the left: */
+.related-widget-wrapper-link.add-related {
+  margin-left: -26px;
+}
+
+
+@media (max-width: 1024px) {
+  .selector-up {
+    background: url(../admin/img/selector-icons.svg) 0 0 no-repeat;
+  }
+  .selector-down {
+    background: url(../admin/img/selector-icons.svg) 0 -41px no-repeat;
+  }
+  .selector-up:hover {
+    background-position: 0 -20px;
+  }
+  .selector-down:hover {
+    background-position: 0 -61px;
+  }
+
+  .selector-up,
+  .selector-down {
+      width: 20px;
+      height: 20px;
+      background-size: 20px auto;
+  }
+
+  /* Pull add-related button to the left: */
+  .related-widget-wrapper-link.add-related {
+    margin-left: -62px;
+  }
 }
