@@ -1,5 +1,10 @@
 Changelog
 =========
+1.2.1:
+ Add workaround to have verbose_name reference (#1)
+ Fix Select and Clear All button (#2)
+ Fix translation for Clear All button (#3)
+
 1.2:
  Implement new admin style introduced in Django 1.9
  Remove all images since buttons are now handled with css
