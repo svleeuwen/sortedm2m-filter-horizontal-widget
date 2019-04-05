@@ -91,7 +91,7 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
         attrs['class'] = u' '.join(classes)
         return attrs
 
-    def render(self, name, value, attrs=None, choices=()):
+    def render(self, name, value, attrs=None, choices=(), renderer=None):
         if attrs is None: attrs = {}
         if value is None: value = []
         admin_media_prefix = getattr(settings, 'ADMIN_MEDIA_PREFIX', STATIC_URL + 'admin/')
