@@ -44,6 +44,7 @@ ul.sortedm2m li, ul.sortedm2m label {
 body.change-form .sortedm2m-container {
     float: left;
 }
+
 .module ul.sortedm2m {
     margin: 0;
     padding: 6px 8px;
@@ -58,75 +59,88 @@ body.change-form .sortedm2m-container {
 
 /* Make the whole widget wider, to fit the extra buttons: */
 .selector {
-  width: 827px;
+    width: 827px;
 }
 
 .selector ul.selector-chooser {
-  float: left;
-  width: 22px;
-  background-color: #eee;
-  border-radius: 10px;
-  margin: 10em 5px 0 5px;
-  padding: 0;
+    float: left;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 10em 5px 0 5px;
+    padding: 0;
 }
 
 .selector-chooser li {
-  list-style-type: none;
-  margin: 0;
-  padding: 3px;
+    list-style-type: none;
+    margin: 0;
+    padding: 3px;
 }
 
 .selector-up,
 .selector-down {
-  display: block;
-  width: 16px;
-  height: 16px;
-  margin-bottom: 2px;
-  overflow: hidden;
-  text-indent: -3000px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-indent: -3000px;
 }
+
 .selector-up {
-  background: url(../admin/img/selector-icons.svg) 0 1px no-repeat;
+    background: url(../admin/img/selector-icons.svg) 0 1px no-repeat;
 }
+
 .selector-down {
-  background: url(../admin/img/selector-icons.svg) 0 -31px no-repeat;
+    background: url(../admin/img/selector-icons.svg) 0 -31px no-repeat;
 }
+
 .selector-up:hover {
-  background-position: 0 -15px;
+    background-position: 0 -15px;
 }
+
 .selector-down:hover {
-  background-position: 0 -47px;
+    background-position: 0 -47px;
 }
 
 /* Pull add-related button to the left: */
-.related-widget-wrapper-link.add-related {
-  margin-left: -26px;
+.sortedm2m_filter_horizontal_widget_add_button {
+    margin-left: -26px;
 }
 
-
 @media (max-width: 1024px) {
-  .selector-up {
-    background: url(../admin/img/selector-icons.svg) 0 0 no-repeat;
-  }
-  .selector-down {
-    background: url(../admin/img/selector-icons.svg) 0 -41px no-repeat;
-  }
-  .selector-up:hover {
-    background-position: 0 -20px;
-  }
-  .selector-down:hover {
-    background-position: 0 -61px;
-  }
+    .selector-up {
+        background: url(../admin/img/selector-icons.svg) 0 0 no-repeat;
+    }
 
-  .selector-up,
-  .selector-down {
-      width: 20px;
-      height: 20px;
-      background-size: 20px auto;
-  }
+    .selector-down {
+        background: url(../admin/img/selector-icons.svg) 0 -41px no-repeat;
+    }
 
-  /* Pull add-related button to the left: */
-  .related-widget-wrapper-link.add-related {
-    margin-left: -62px;
-  }
+    .selector-up:hover {
+        background-position: 0 -20px;
+    }
+
+    .selector-down:hover {
+        background-position: 0 -61px;
+    }
+
+    .selector-up,
+    .selector-down {
+        width: 20px;
+        height: 20px;
+        background-size: 20px auto;
+    }
+
+    /* Pull add-related button to the left: */
+    .sortedm2m_filter_horizontal_widget_add_button {
+        margin-left: -51px;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Do not Pull add-related button to the left: */
+    .sortedm2m_filter_horizontal_widget_add_button {
+        margin-left: 0;
+    }
 }
