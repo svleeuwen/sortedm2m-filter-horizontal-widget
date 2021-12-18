@@ -4,7 +4,7 @@ from itertools import chain
 from django import forms
 from django.conf import settings
 from django.db.models.query import QuerySet
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape, escape
 from django.utils.safestring import mark_safe
 
@@ -13,7 +13,7 @@ try:
 except ImportError:
     from django.forms.util import flatatt
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 if sys.version_info[0] < 3:
@@ -53,8 +53,8 @@ class SortedMultipleChoiceField(forms.ModelMultipleChoiceField):
             data = []
         if len(initial) != len(data):
             return True
-        initial_set = [force_text(value) for value in self.prepare_value(initial)]
-        data_set = [force_text(value) for value in data]
+        initial_set = [force_str(value) for value in self.prepare_value(initial)]
+        data_set = [force_str(value) for value in data]
         return data_set != initial_set
 
 
@@ -136,7 +136,7 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
         return mark_safe(u'\n'.join(output))
 
     def render_option(self, selected_choices, option_value, option_label):
-        option_value = force_text(option_value)
+        option_value = force_str(option_value)
         selected_html = (option_value in selected_choices) and u' selected="selected"' or ''
         try:
             index = list(selected_choices).index(escape(option_value))
@@ -146,15 +146,15 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
 
         return u'<option value="%s"%s>%s</option>' % (
             escape(option_value), selected_html,
-            conditional_escape(force_text(option_label)))
+            conditional_escape(force_str(option_label)))
 
     def render_options(self, choices, selected_choices):
         # Normalize to strings.
-        selected_choices = list(force_text(v) for v in selected_choices)
+        selected_choices = list(force_str(v) for v in selected_choices)
         output = []
         for option_value, option_label in chain(self.choices, choices):
             if isinstance(option_label, (list, tuple)):
-                output.append(u'<optgroup label="%s">' % escape(force_text(option_value)))
+                output.append(u'<optgroup label="%s">' % escape(force_str(option_value)))
                 for option in option_label:
                     output.append(self.render_option(selected_choices, *option))
                 output.append(u'</optgroup>')
@@ -169,6 +169,6 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
             data = []
         if len(initial) != len(data):
             return True
-        initial_set = [force_text(value) for value in initial]
-        data_set = [force_text(value) for value in data]
+        initial_set = [force_str(value) for value in initial]
+        data_set = [force_str(value) for value in data]
         return data_set != initial_set
