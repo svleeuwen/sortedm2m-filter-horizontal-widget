@@ -3,8 +3,9 @@
 *.egg
 *.egg-info
 coverage.xml
-db.sqlite
+db.sqlite*
 pep8.txt
 /dist/
 /.tox/
 /.vagrant/
+/.python-version
