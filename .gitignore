@@ -9,3 +9,4 @@ pep8.txt
 /.tox/
 /.vagrant/
 /.python-version
+venv/

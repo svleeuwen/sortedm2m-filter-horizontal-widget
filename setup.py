@@ -55,10 +55,10 @@ class UltraMagicString(object):
         return str(self).split(*args, **kw)
 
 
-long_description = UltraMagicString('\n\n'.join((
+long_description = '\n\n'.join((
     read('README.rst'),
     read('CHANGES.rst'),
-)))
+))
 
 version = find_version('sortedm2m_filter_horizontal_widget', '__init__.py')
 
