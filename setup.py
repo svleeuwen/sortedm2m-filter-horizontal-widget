@@ -27,34 +27,6 @@ except NameError:
     bytes = str
 
 
-class UltraMagicString(object):
-    """
-    Taken from
-    http://stackoverflow.com/questions/1162338/whats-the-right-way-to-use-unicode-metadata-in-setup-py
-    """
-    def __init__(self, value):
-        if not isinstance(value, bytes):
-            value = value.encode('utf8')
-        self.value = value
-
-    def __bytes__(self):
-        return self.value
-
-    def __unicode__(self):
-        return self.value.decode('UTF-8')
-
-    if sys.version_info[0] < 3:
-        __str__ = __bytes__
-    else:
-        __str__ = __unicode__
-
-    def __add__(self, other):
-        return UltraMagicString(self.value + bytes(other))
-
-    def split(self, *args, **kw):
-        return str(self).split(*args, **kw)
-
-
 long_description = '\n\n'.join((
     read('README.rst'),
     read('CHANGES.rst'),
@@ -68,10 +40,9 @@ setup(
     url = 'https://github.com/svleeuwen/sortedm2m-filter-horizontal-widget',
     download_url = 'https://github.com/svleeuwen/sortedm2m-filter-horizontal-widget/archive/{}.tar.gz'.format(version),
     license = 'BSD',
-    description =
-        'Horizontal filter widget for django-sortedm2m',
+    description = 'Horizontal filter widget for django-sortedm2m',
     long_description = long_description,
-    author = UltraMagicString('Sander van Leeuwen'),
+    author = u'Sander van Leeuwen',
     author_email = 'replytosander@gmail.com',
     packages = ['sortedm2m_filter_horizontal_widget'],
     include_package_data = True,
@@ -91,6 +62,8 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
     install_requires = ['django-sortedm2m'],
 )
