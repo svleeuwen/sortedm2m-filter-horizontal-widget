@@ -10,3 +10,4 @@ pep8.txt
 /.vagrant/
 /.python-version
 venv/
+.idea
