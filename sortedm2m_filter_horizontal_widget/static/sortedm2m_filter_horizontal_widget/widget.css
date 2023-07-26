@@ -98,12 +98,6 @@ body.change-form .sortedm2m-container {
   background-position: 0 -47px;
 }
 
-/* Pull add-related button to the left: */
-.related-widget-wrapper-link.add-related {
-  margin-left: -26px;
-}
-
-
 @media (max-width: 1024px) {
   .selector-up {
     background: url(../admin/img/selector-icons.svg) 0 0 no-repeat;
