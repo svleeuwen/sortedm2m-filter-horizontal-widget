@@ -1,5 +1,9 @@
 Changelog
 =========
+2.0.1
+ - Remove margin that has side effects with default fk selector
+ - Cleanup of unneeded compatibility code
+
 2.0.0
  - Support for Django 3.5<
  - Add DEFAULT_AUTO_FIELD settings
