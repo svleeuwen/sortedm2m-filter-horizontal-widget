@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from itertools import chain
 from django import forms
 from django.conf import settings
@@ -9,14 +8,14 @@ from django.utils.safestring import mark_safe
 
 from django.forms.utils import flatatt
 
-STATIC_URL = getattr(settings, 'STATIC_URL', settings.MEDIA_URL)
+STATIC_URL = getattr(settings, "STATIC_URL", settings.MEDIA_URL)
 
 
 class SortedMultipleChoiceField(forms.ModelMultipleChoiceField):
     def __init__(self, *args, **kwargs):
-        if not kwargs.get('widget'):
-            kwargs['widget'] = SortedFilteredSelectMultiple(
-                is_stacked=kwargs.get('is_stacked', False)
+        if not kwargs.get("widget"):
+            kwargs["widget"] = SortedFilteredSelectMultiple(
+                is_stacked=kwargs.get("is_stacked", False)
             )
         super(SortedMultipleChoiceField, self).__init__(*args, **kwargs)
 
@@ -24,9 +23,9 @@ class SortedMultipleChoiceField(forms.ModelMultipleChoiceField):
         queryset = super(SortedMultipleChoiceField, self).clean(value)
         if value is None or not isinstance(queryset, QuerySet):
             return queryset
-        object_list = dict((
-            (str(key), value)
-            for key, value in iter(queryset.in_bulk(value).items())))
+        object_list = dict(
+            ((str(key), value) for key, value in iter(queryset.in_bulk(value).items()))
+        )
         return [object_list[str(pk)] for pk in value]
 
     def _has_changed(self, initial, data):
@@ -45,7 +44,7 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
     """
     A SortableSelectMultiple with a JavaScript filter interface.
 
-	Requires jQuery to be loaded.
+        Requires jQuery to be loaded.
 
     Note that the resulting JavaScript assumes that the jsi18n
     catalog has been loaded in the page
@@ -57,41 +56,51 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
 
     class Media:
         css = {
-            'screen': (STATIC_URL + 'sortedm2m_filter_horizontal_widget/widget.css',)
+            "screen": (STATIC_URL + "sortedm2m_filter_horizontal_widget/widget.css",)
         }
 
-        js = (STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectBox.js',
-              STATIC_URL + 'sortedm2m_filter_horizontal_widget/OrderedSelectFilter.js',
-              STATIC_URL + 'sortedm2m_filter_horizontal_widget/jquery.min.js')
+        js = (
+            STATIC_URL + "sortedm2m_filter_horizontal_widget/OrderedSelectBox.js",
+            STATIC_URL + "sortedm2m_filter_horizontal_widget/OrderedSelectFilter.js",
+            STATIC_URL + "sortedm2m_filter_horizontal_widget/jquery.min.js",
+        )
 
     def build_attrs(self, attrs=None, extra_attrs=None, **kwargs):
         attrs = dict(attrs, **kwargs)
         if extra_attrs:
             attrs.update(extra_attrs)
-        classes = attrs.setdefault('class', '').split()
-        classes.append('sortedm2m')
-        if self.is_stacked: classes.append('stacked')
-        attrs['class'] = ' '.join(classes)
+        classes = attrs.setdefault("class", "").split()
+        classes.append("sortedm2m")
+        if self.is_stacked:
+            classes.append("stacked")
+        attrs["class"] = " ".join(classes)
         return attrs
 
     def render(self, name, value, attrs=None, choices=(), renderer=None):
-        if attrs is None: attrs = {}
-        if value is None: value = []
-        admin_media_prefix = getattr(settings, 'ADMIN_MEDIA_PREFIX', STATIC_URL + 'admin/')
+        if attrs is None:
+            attrs = {}
+        if value is None:
+            value = []
+        admin_media_prefix = getattr(
+            settings, "ADMIN_MEDIA_PREFIX", STATIC_URL + "admin/"
+        )
         final_attrs = self.build_attrs(self.attrs, attrs, name=name)
         output = [f'<select multiple="multiple"{flatatt(final_attrs)}>']
         options = self.render_options(choices, value)
         if options:
             output.append(options)
-        if 'verbose_name' in final_attrs.keys():
-            verbose_name = final_attrs['verbose_name']
+        if "verbose_name" in final_attrs.keys():
+            verbose_name = final_attrs["verbose_name"]
         else:
-            verbose_name = name.split('-')[-1]
-        output.append('</select>')
+            verbose_name = name.split("-")[-1]
+        output.append("</select>")
         output.append('<script>window.addEventListener("load", function(e) {')
-        output.append(f"OrderedSelectFilter.init('id_{name}', '{verbose_name}', {int(self.is_stacked)}, '{admin_media_prefix}')")
-        output.append('});</script>\n')
-        output.append("""
+        output.append(
+            f"OrderedSelectFilter.init('id_{name}', '{verbose_name}', {int(self.is_stacked)}, '{admin_media_prefix}')"
+        )
+        output.append("});</script>\n")
+        output.append(
+            """
         <script>
         (function($) {
             $(document).ready(function() {
@@ -114,13 +123,17 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
                 });
             });
         })(django.jQuery)
-        </script>""" % (admin_media_prefix, admin_media_prefix))
+        </script>"""
+            % (admin_media_prefix, admin_media_prefix)
+        )
 
-        return mark_safe('\n'.join(output))
+        return mark_safe("\n".join(output))
 
     def render_option(self, selected_choices, option_value, option_label):
         option_value = force_str(option_value)
-        selected_html = (option_value in selected_choices) and ' selected="selected"' or ''
+        selected_html = (
+            (option_value in selected_choices) and ' selected="selected"' or ""
+        )
         try:
             index = list(selected_choices).index(escape(option_value))
             selected_html = f' data-sort-value="{index}" {selected_html}'
@@ -128,6 +141,7 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
             pass
 
         return f'<option value="{escape(option_value)}"{selected_html}>{conditional_escape(force_str(option_label))}</option>'
+
     def render_options(self, choices, selected_choices):
         # Normalize to strings.
         selected_choices = list(force_str(v) for v in selected_choices)
@@ -137,10 +151,12 @@ class SortedFilteredSelectMultiple(forms.SelectMultiple):
                 output.append(f'<optgroup label="{escape(force_str(option_value))}">')
                 for option in option_label:
                     output.append(self.render_option(selected_choices, *option))
-                output.append('</optgroup>')
+                output.append("</optgroup>")
             else:
-                output.append(self.render_option(selected_choices, option_value, option_label))
-        return '\n'.join(output)
+                output.append(
+                    self.render_option(selected_choices, option_value, option_label)
+                )
+        return "\n".join(output)
 
     def _has_changed(self, initial, data):
         if initial is None:

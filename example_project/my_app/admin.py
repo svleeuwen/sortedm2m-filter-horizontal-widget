@@ -6,15 +6,19 @@ from .models import Book, Author, Publisher
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ["authors"]
+
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
-        if db_field.name == 'authors':
-            kwargs['widget'] = SortedFilteredSelectMultiple()
-        return super(BookAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+        if db_field.name == "authors":
+            kwargs["widget"] = SortedFilteredSelectMultiple()
+        return super(BookAdmin, self).formfield_for_manytomany(
+            db_field, request, **kwargs
+        )
 
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     pass
+
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
