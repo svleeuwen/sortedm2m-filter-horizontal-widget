@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "django-sortedm2m-filter-horizontal-widget"
+version = "2.0.0"
+description = "Django admin widget for Gregor Mülleggers django-sortedm2m_ library"
+authors = ["Sander van Leeuwen <replytosander@gmail.com>"]
+license = "BSD"
+readme = "README.md"
+packages = [{include = "sortedm2m_filter_horizontal_widget"}]
+
+[tool.poetry.dependencies]
+python = "^3.5"
+django-sortedm2m = "^3.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
